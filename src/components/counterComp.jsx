@@ -8,24 +8,29 @@ class CounterComp extends Component {
         tags: ['tag1', 'tag2', 'tag3'],
     };
 
-    renderTags() {
-        // if (this.state.tags.length === 0) return null
-        if (this.state.tags.length === 0) return <p>No tags</p>
-        return <ul> { this.state.tags.map(tag => <li key={tag}>{ tag }</li>) }</ul>;
+    handleIncrement () {
+        console.log("This was clicked");
+        // this is undefined here - function scope
+        // state belongs to the object
     }
 
     render() { 
         return (
             <React.Fragment>
-                { this.state.tags.length === 0 && "Add some tags" }
-                {this.renderTags()}
+                <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+                <button onClick={this.handleIncrement} style={{fontSize: 13}} className="btn btn-secondary btn-sm">Increment</button>
             </React.Fragment>
         );
     }
 
-    /*
-    <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button style={{fontSize: 13}} className="btn btn-secondary btn-sm">Increment</button>
+    /*renderTags() {
+        // if (this.state.tags.length === 0) return null
+        if (this.state.tags.length === 0) return <p>No tags</p>
+        return <ul> { this.state.tags.map(tag => <li key={tag}>{ tag }</li>) }</ul>;
+    }
+    
+    { this.state.tags.length === 0 && "Add some tags" }
+    { this.renderTags() }
     */
 
      /*{this.style}
