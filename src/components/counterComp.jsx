@@ -3,7 +3,12 @@ import React, { Component } from 'react';
 class CounterComp extends Component {
     state = {  }
     render() {  
-        return <h1>Hello hi</h1>;
+        return (
+            <React.Fragment>
+                <h1>Hello</h1>
+                <button>Increment</button>
+            </React.Fragment>
+        );
     }
 }
  
