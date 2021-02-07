@@ -11,12 +11,14 @@ class CounterComp extends Component {
     // or convert this method to an arrow one that doesn;t bind the this
     handleIncrement = () => {
         console.log("This was clicked", this);
+        // updating a state:
+        this.setState({count: this.state.count + 1});
     }
 
     render() { 
         return (
             <React.Fragment>
-                <span className={this.getBadgeClasses()}>{this.formatCount(this.state.count)}</span>
+                <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
                 <button onClick={this.handleIncrement} style={{fontSize: 13}} className="btn btn-secondary btn-sm">Increment</button>
             </React.Fragment>
         );
@@ -29,8 +31,9 @@ class CounterComp extends Component {
         return classes;
     }
 
-    formatCount(counter) {
-        return counter === 0 ? "Zero" : counter;
+    formatCount() {
+        const {count} = this.state;
+	    return count === 0 ? "Zero" : count;
         // or: return count === 0 ? <h1>Zero</h1> : count;
     }
 
