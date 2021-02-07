@@ -8,19 +8,9 @@ class CounterComp extends Component {
         tags: ['tag1', 'tag2', 'tag3'],
     };
 
-    constructor() {
-        super();
-        // bind this object to my method
-        this.handleIncrement = this.handleIncrement.bind(this);
-    }
- 
-    handleIncrement () {
-        console.log("This was clicked");
-        // this is undefined here - function scope
-        // state belongs to the object
-        // we have to bind in the constructor this element to this method
-
-        this.state.count = this.state.count++;
+    // or convert this method to an arrow one that doesn;t bind the this
+    handleIncrement = () => {
+        console.log("This was clicked", this);
     }
 
     render() { 
@@ -31,23 +21,6 @@ class CounterComp extends Component {
             </React.Fragment>
         );
     }
-
-    /*renderTags() {
-        // if (this.state.tags.length === 0) return null
-        if (this.state.tags.length === 0) return <p>No tags</p>
-        return <ul> { this.state.tags.map(tag => <li key={tag}>{ tag }</li>) }</ul>;
-    }
-    
-    { this.state.tags.length === 0 && "Add some tags" }
-    { this.renderTags() }
-    */
-
-     /*{this.style}
-    style = {
-        // camel case notation:
-        fontSize: 10, // 10px implicit
-        fontWeight: "bold"
-    };*/
 
     // Ctrl+Shift+R
     getBadgeClasses() { // rendering classes
@@ -61,16 +34,6 @@ class CounterComp extends Component {
         // or: return count === 0 ? <h1>Zero</h1> : count;
     }
 
-    // <h1>{this.state.hello} {2 + 2}</h1>
-    // <img className="hidden" src={this.state.imageUrl} alt=""/>
-    // {this.formatCount()}
-    /*formatCount() {
-        // object destructuring
-        const {count} = this.state;
-        const x = <h1>JSX expression here</h1>
-        return count === 0 ? "Zero" : count;
-        // or: return count === 0 ? <h1>Zero</h1> : count;
-    }*/
 }
  
 export default CounterComp;
