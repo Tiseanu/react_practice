@@ -3,21 +3,30 @@ import React, { Component } from 'react';
 class CounterComp extends Component {
     state = { // here we have all the props
         hello: "Hellooo",
-        count: 1,
+        count: 0,
         imageUrl: "https://picsum.photos/200",
         tags: ['tag1', 'tag2', 'tag3'],
     };
 
+    constructor() {
+        super();
+        // bind this object to my method
+        this.handleIncrement = this.handleIncrement.bind(this);
+    }
+ 
     handleIncrement () {
         console.log("This was clicked");
         // this is undefined here - function scope
         // state belongs to the object
+        // we have to bind in the constructor this element to this method
+
+        this.state.count = this.state.count++;
     }
 
     render() { 
         return (
             <React.Fragment>
-                <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+                <span className={this.getBadgeClasses()}>{this.formatCount(this.state.count)}</span>
                 <button onClick={this.handleIncrement} style={{fontSize: 13}} className="btn btn-secondary btn-sm">Increment</button>
             </React.Fragment>
         );
@@ -47,16 +56,21 @@ class CounterComp extends Component {
         return classes;
     }
 
+    formatCount(counter) {
+        return counter === 0 ? "Zero" : counter;
+        // or: return count === 0 ? <h1>Zero</h1> : count;
+    }
+
     // <h1>{this.state.hello} {2 + 2}</h1>
     // <img className="hidden" src={this.state.imageUrl} alt=""/>
     // {this.formatCount()}
-    formatCount() {
+    /*formatCount() {
         // object destructuring
         const {count} = this.state;
         const x = <h1>JSX expression here</h1>
         return count === 0 ? "Zero" : count;
         // or: return count === 0 ? <h1>Zero</h1> : count;
-    }
+    }*/
 }
  
 export default CounterComp;
