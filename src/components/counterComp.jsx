@@ -15,11 +15,23 @@ class CounterComp extends Component {
         this.setState({count: this.state.count + 1});
     }
 
+    handleDecrement = () => {
+        console.log("This was clicked", this);
+        // updating a state:
+        if (this.state.count > 0) {
+            this.setState({count: this.state.count - 1});
+        } else {
+            console.log("Cannot do this operation.");
+            alert("Cannot perform this operation.");
+        }
+    }
+
     render() { 
         return (
             <React.Fragment>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button onClick={this.handleIncrement} style={{fontSize: 13}} className="btn btn-secondary btn-sm">Increment</button>
+                <button onClick={this.handleDecrement} style={{fontSize: 13, marginLeft: 10, marginRight: 10}} className="btn btn-secondary btn-sm" disable={this.disableBtn()}>-</button>
+                <button onClick={this.handleIncrement} style={{fontSize: 13}} className="btn btn-secondary btn-sm">+</button>
             </React.Fragment>
         );
     }
@@ -35,6 +47,11 @@ class CounterComp extends Component {
         const {count} = this.state;
 	    return count === 0 ? "Zero" : count;
         // or: return count === 0 ? <h1>Zero</h1> : count;
+    }
+
+    disableBtn () {
+        const {count} = this.state;
+        return count === 0 ? "disabled" : "";
     }
 
 }
