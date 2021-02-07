@@ -5,10 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import CounterComp from './components/counterComp';
+import Counters from './components/counters';
 
 ReactDOM.render(
-    <CounterComp />,
+    <Counters />,
   document.getElementById('root')
 );
 

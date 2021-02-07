@@ -28,12 +28,13 @@ class CounterComp extends Component {
 
     render() { 
         return (
-            <React.Fragment>
+            <div>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
                 <button onClick={this.handleDecrement} style={{fontSize: 13, marginLeft: 10, marginRight: 10}} className="btn btn-secondary btn-sm" disable={this.disableBtn()}>-</button>
                 <button onClick={this.handleIncrement} style={{fontSize: 13}} className="btn btn-secondary btn-sm">+</button>
-            </React.Fragment>
-        );
+                <div className="clearfix" style={{marginBottom: 10}}></div> 
+            </div>     
+            );
     }
 
     // Ctrl+Shift+R
