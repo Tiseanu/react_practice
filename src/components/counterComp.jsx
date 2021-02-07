@@ -25,7 +25,8 @@ class CounterComp extends Component {
         return (
             console.log("props", this.props),
             <div>
-                <span className={this.getBadgeClasses()}>{this.formatValue()}</span>
+                {this.props.children}
+                <span className={this.getBadgeClasses()}>{this.state.value}</span>
                 <button onClick={this.handleDecrement} style={{fontSize: 13, marginLeft: 10, marginRight: 10}} className="btn btn-secondary btn-sm" disable={this.disableBtn()}>-</button>
                 <button onClick={this.handleIncrement} style={{fontSize: 13}} className="btn btn-secondary btn-sm">+</button>
                 <div className="clearfix" style={{marginBottom: 10}}></div> 
@@ -38,12 +39,6 @@ class CounterComp extends Component {
         let classes = "badge m2 badge-";
         classes += (this.state.value === 0) ? "warning" : "primary";
         return classes;
-    }
-
-    formatValue() {
-        const {value} = this.state;
-	    return value === 0 ? "Zero" : value;
-        // or: return value === 0 ? <h1>Zero</h1> : value;
     }
 
     disableBtn () {

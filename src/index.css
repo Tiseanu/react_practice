@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+#root {
+  margin-top: 5%
+}
+
 #root div {
   text-align: center!important;
+}
+
+#root div strong{
+  display: block;
 }
